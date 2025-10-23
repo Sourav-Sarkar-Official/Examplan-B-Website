@@ -33,7 +33,7 @@ export default function Navbar() {
               Notes
             </Link>
             <Link href="/faq" className="text-white/90 hover:text-white transition font-medium">
-              Need Help
+              Need Help ?
             </Link>
           </div>
 

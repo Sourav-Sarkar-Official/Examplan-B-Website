@@ -24,12 +24,12 @@ export default function NotesPage() {
           <div className="mt-12 p-8 bg-card border border-border rounded-xl shadow-lg">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">100+</div>
+                <div className="text-3xl font-bold text-accent mb-2">50+</div>
                 <p className="text-muted-foreground">Courses Covered</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-border"></div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">500+</div>
+                <div className="text-3xl font-bold text-accent mb-2">100+</div>
                 <p className="text-muted-foreground">Study Materials</p>
               </div>
               <div className="hidden sm:block w-px h-12 bg-border"></div>
@@ -37,20 +37,6 @@ export default function NotesPage() {
                 <div className="text-3xl font-bold text-accent mb-2">24/7</div>
                 <p className="text-muted-foreground">Access Anytime</p>
               </div>
-            </div>
-          </div>
-
-          <div className="mt-12">
-            <p className="text-muted-foreground mb-6">Be the first to know when notes are available</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="px-6 py-3 rounded-lg border border-border bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent"
-              />
-              <button className="px-8 py-3 bg-accent hover:bg-accent/90 text-white font-semibold rounded-lg transition transform hover:scale-105 active:scale-95">
-                Notify Me
-              </button>
             </div>
           </div>
         </div>
