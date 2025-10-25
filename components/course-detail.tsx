@@ -3,6 +3,7 @@
 import { getCourseBySlug } from "@/lib/courses-data"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { WhatsappShareButton, WhatsappIcon, TelegramShareButton, TelegramIcon } from "react-share"
 
 interface CourseDetailProps {
   slug: string
@@ -52,7 +53,7 @@ export default function CourseDetail({ slug }: CourseDetailProps) {
               <ul className="space-y-3">
                 {course.whatYouWillLearn.map((item, index) => (
                   <li key={index} className="flex gap-3 items-start">
-                    <span className="text-accent font-bold text-lg mt-1">✓</span>
+                    <span className="text-chart-1 font-bold text-lg mt-1">✓</span>
                     <span className="text-foreground text-lg">{item}</span>
                   </li>
                 ))}
@@ -141,6 +142,28 @@ export default function CourseDetail({ slug }: CourseDetailProps) {
                 >
                   View All Courses
                 </Link>
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-border"></div>
+
+              {/* Share Buttons */}
+              <div>
+                <p className="text-sm text-muted-foreground mb-3">Share this course:</p>
+                <div className="flex gap-3">
+                  <WhatsappShareButton
+                    url={`https://examplanb.vercel.app/course/${slug}`}
+                    title={`📌Check out this course: ${course.title}`}
+                  >
+                    <WhatsappIcon size={40} round />
+                  </WhatsappShareButton>
+                  <TelegramShareButton
+                    url={`https://examplanb.vercel.app/course/${slug}`}
+                    title={`📌Check out this course: ${course.title}`}
+                  >
+                    <TelegramIcon size={40} round />
+                  </TelegramShareButton>
+                </div>
               </div>
             </div>
           </div>

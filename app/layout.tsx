@@ -5,6 +5,7 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import DiscountBanner from "@/components/discount-banner"
+import WhatsAppFloat from "@/components/whatsapp-float"
 
 const geistSans = Geist({ subsets: ["latin"] })
 const geistMono = Geist_Mono({ subsets: ["latin"] })
@@ -27,6 +28,7 @@ export default function RootLayout({
   <DiscountBanner />
   <main>{children}</main>
         <Footer />
+        <WhatsAppFloat />
       </body>
     </html>
   )
