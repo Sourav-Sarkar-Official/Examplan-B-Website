@@ -22,11 +22,20 @@ export default function CourseCard({ course }: CourseCardProps) {
       <div className="p-4 sm:p-6 flex-1 flex flex-col">
         <p className="text-muted-foreground text-sm mb-6 flex-1 line-clamp-3">{course.description}</p>
 
-        {/* Pricing */}
+        {/* Pricing and Status */}
         <div className="mb-6">
-          <div className="flex items-center gap-3 mb-2">
-            <span className="text-2xl sm:text-3xl font-bold text-foreground">₹{discountedPrice}</span>
-            <span className="text-sm line-through text-muted-foreground">₹{course.basePrice}</span>
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-3">
+              <span className="text-2xl sm:text-3xl font-bold text-foreground">₹{discountedPrice}</span>
+              <span className="text-sm line-through text-muted-foreground">₹{course.basePrice}</span>
+            </div>
+            <div className={`px-3 py-1 mt-6 rounded-full text-xs font-semibold ${
+              course.status === "live" 
+                ? "bg-green-500 text-white" 
+                : "bg-yellow-500 text-white"
+            }`}>
+              {course.status === "live" ? "LIVE" : "COMING SOON"}
+            </div>
           </div>
           <div className="inline-block bg-accent text-white text-xs font-semibold px-3 py-1 rounded-full">
             {course.discountPercent}% OFF

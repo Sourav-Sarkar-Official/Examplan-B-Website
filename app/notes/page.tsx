@@ -1,45 +1,103 @@
+"use client"
+
+import { useState } from "react"
+import { notes, departments, semesters, noteTypes, priceFilters } from "@/lib/notes-data"
+import { NoteCard } from "@/components/note-card"
+import { Button } from "@/components/ui/button"
+
 export default function NotesPage() {
+  const [selectedSemester, setSelectedSemester] = useState<string>("all")
+  const [selectedNoteType, setSelectedNoteType] = useState<string>("all")
+  const [selectedDepartment, setSelectedDepartment] = useState<string>("all")
+  const [selectedPrice, setSelectedPrice] = useState<string>("all")
+
+  const filteredNotes = notes.filter((note) => {
+    const matchesSemester = selectedSemester === "all" || note.semester === selectedSemester
+    const matchesNoteType = selectedNoteType === "all" || note.noteType === selectedNoteType
+    const matchesDepartment = selectedDepartment === "all" || note.department === selectedDepartment
+    const matchesPrice = selectedPrice === "all" || 
+      (selectedPrice === "paid" ? note.isPaid : !note.isPaid)
+    
+    return matchesSemester && matchesNoteType && matchesDepartment && matchesPrice
+  })
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted pt-20 pb-16">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center py-20">
-          <div className="mb-6">
-            <div className="inline-block p-4 bg-accent/10 rounded-full mb-4">
-              <svg className="w-12 h-12 text-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-            </div>
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">Study Notes</h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto text-balance leading-relaxed">
-            Comprehensive study notes for all MAKAUT courses are coming soon. Get ready to access well-organized,
-            easy-to-understand notes that will help you ace your exams.
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-8">
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Study Notes</h1>
+          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            Access high-quality study materials for all MAKAUT courses
           </p>
-
-          <div className="mt-12 p-8 bg-card border border-border rounded-xl shadow-lg">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">50+</div>
-                <p className="text-muted-foreground">Courses Covered</p>
-              </div>
-              <div className="hidden sm:block w-px h-12 bg-border"></div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">100+</div>
-                <p className="text-muted-foreground">Study Materials</p>
-              </div>
-              <div className="hidden sm:block w-px h-12 bg-border"></div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-accent mb-2">24/7</div>
-                <p className="text-muted-foreground">Access Anytime</p>
-              </div>
-            </div>
-          </div>
         </div>
+
+        {/* Filters */}
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          <select
+            value={selectedSemester}
+            onChange={(e) => setSelectedSemester(e.target.value)}
+            className="px-4 py-2 bg-card border rounded-lg text-foreground"
+          >
+            <option value="all">All Semesters</option>
+            {semesters.filter(sem => sem !== "all").map((semester) => (
+              <option key={semester} value={semester}>
+                {semester} Semester
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={selectedNoteType}
+            onChange={(e) => setSelectedNoteType(e.target.value)}
+            className="px-4 py-2 bg-card border rounded-lg text-foreground"
+          >
+            <option value="all">All Types</option>
+            {noteTypes.filter(type => type !== "all").map((type) => (
+              <option key={type} value={type} className="capitalize">
+                {type}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={selectedDepartment}
+            onChange={(e) => setSelectedDepartment(e.target.value)}
+            className="px-4 py-2 bg-card border rounded-lg text-foreground"
+          >
+            <option value="all">All Departments</option>
+            {departments.filter(dept => dept !== "all").map((department) => (
+              <option key={department} value={department}>
+                {department}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={selectedPrice}
+            onChange={(e) => setSelectedPrice(e.target.value)}
+            className="px-4 py-2 bg-card border rounded-lg text-foreground"
+          >
+            <option value="all">All Notes</option>
+            {priceFilters.filter(price => price !== "all").map((price) => (
+              <option key={price} value={price} className="capitalize">
+                {price}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Notes Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredNotes.map((note) => (
+            <NoteCard key={note.id} note={note} />
+          ))}
+        </div>
+
+        {filteredNotes.length === 0 && (
+          <div className="text-center py-8 text-muted-foreground">
+            No notes found for the selected filters
+          </div>
+        )}
       </div>
     </div>
   )

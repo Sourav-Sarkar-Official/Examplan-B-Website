@@ -25,7 +25,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.className}`}>
   <Navbar />
-  <DiscountBanner />
+  {/* Discount banner temporarily disabled */}
+  {/* <DiscountBanner /> */}
   <main>{children}</main>
         <Footer />
         <WhatsAppFloat />

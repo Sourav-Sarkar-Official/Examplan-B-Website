@@ -92,12 +92,12 @@ export default function Features() {
     {
       icon: <BookIcon />,
       title: "Expert-Curated Content",
-      description: "Learn from industry experts with years of experience teaching MAKAUT curriculum",
+      description: "Learn from subject experts with years of experience teaching MAKAUT curriculum",
     },
     {
       icon: <TargetIcon />,
       title: "Focused Learning",
-      description: "Structured courses designed specifically for MAKAUT exams and placements",
+      description: "Structured courses designed specifically for MAKAUT semester exams",
     },
     {
       icon: <InteractiveIcon />,
@@ -112,12 +112,12 @@ export default function Features() {
     {
       icon: <CertificateIcon />,
       title: "Proven Results",
-      description: "95% of our students score above 8 CGPA and get placed in top companies",
+      description: "95% of our students score above 8 CGPA",
     },
     {
       icon: <LearnPathIcon />,
       title: "Learn at Your Pace",
-      description: "Access lifetime course materials and learn whenever you want, wherever you want",
+      description: "Access course materials and learn whenever you want, wherever you want",
     },
   ]
 
@@ -137,7 +137,7 @@ export default function Features() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="group p-8 bg-card border border-border rounded-xl hover:border-accent hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
+              className="glow-card group p-8 bg-card border border-border rounded-xl hover:border-accent hover:shadow-lg transition duration-300 transform hover:-translate-y-1"
             >
               <div className="mb-4">
                 <span className="inline-block text-yellow-500">{feature.icon}</span>

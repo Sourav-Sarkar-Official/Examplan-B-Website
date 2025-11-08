@@ -18,7 +18,7 @@ export default function Hero() {
           <div className="space-y-6 md:space-y-8">
             <div className="space-y-4">
               <div className="inline-block px-4 py-2 bg-white/6 backdrop-blur-sm rounded-full border border-white/10">
-                <span className="text-sm font-semibold text-white/95">Welcome to Smart Learning</span>
+                <span className="text-sm font-semibold text-white/95">Welcome to Smart Learning Platform</span>
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight drop-shadow-lg">

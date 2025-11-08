@@ -30,7 +30,7 @@ export default function Navbar() {
               Courses
             </Link>
             <Link href="/notes" className="text-white/90 hover:text-white transition font-medium">
-              Notes
+              Materials
             </Link>
             <Link href="/faq" className="text-white/90 hover:text-white transition font-medium">
               Need Help ?
